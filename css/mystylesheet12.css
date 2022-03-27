@@ -1,0 +1,660 @@
+:root {
+    --my-font: montserrat;
+    --my-font-bold: montserrat bold;
+    --my-font-semi-bold: montserrat semibold;
+
+    --my-font-default-size: 1rem;
+    --my-font-small-size: calc(var(--my-font-default-size) * 0.8);
+    --my-font-medium-size: calc(var(--my-font-default-size) * 1.45);
+    --my-font-large-size: calc(var(--my-font-default-size) * 2.5);
+    --my-font-very-large-size: calc(var(--my-font-default-size) * 3.5);
+
+    --font-dark-color: var(--my-navy);
+    --font-light-color: var(--my-white);
+
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --shadow-lighter-color: rgba(0, 0, 0, 0.05);
+
+    --button-hover-font-shadow: 0.15rem 0.15rem 0.075rem var(--shadow-color), 0.2rem 0.2rem 0.075rem var(--shadow-lighter-color); 
+    --font-shadow: 0rem 0.4rem 0.4rem var(--shadow-color);
+    --input-field-hover-shadow: 0.1rem 0.4rem 0.6rem var(--shadow-color);
+    --input-field-hover-border: 0.1rem solid var(--my-orange);
+    --my-border-radius: 50px;
+
+    --my-white: rgba(249, 252, 255, 1);
+    --my-navy: rgba(11, 0, 57, 1);
+    --my-cyan: rgba(206, 255, 255, 1);
+    --my-cyan-dark: rgba(195, 241, 241, 1);
+    --my-orange: rgba(255, 184, 0, 1);
+    --my-orange-dark: rgba(196, 140, 0, 1);
+
+}
+@font-face {
+    font-family: montserrat semibold;
+    src: url(../fonts/Montserrat-SemiBold.otf);
+}
+@font-face {
+    font-family: montserrat bold;
+    src: url(../fonts/Montserrat-Bold.otf);
+}
+@font-face {
+    font-family: montserrat;
+    src: url(../fonts/Montserrat-Regular.otf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+::selection {
+    background-color: var(--my-orange);
+    color: var(--my-navy);
+}
+html, body {
+    font-family: var(--my-font-bold);
+    height: 100vh;
+    overflow: hidden;
+}
+header nav {
+    background-color: var(--my-white);
+    width: 100%;
+    height: 6em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header nav .navLinks, #logoutButton {
+	list-style-type: none;
+	font-size: var(--my-font-small-size);
+    font-family: var(--my-font-bold);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+header nav .navLinks li a, #logoutButton {
+	color: var(--my-navy);
+    text-decoration: none;
+    padding: 1rem;
+}
+header nav .navLinks li #loginButton, #logoutButton {
+    background-color: var(--my-cyan);
+    border-radius: var(--my-border-radius);
+}
+#logoutButton {
+    border: unset;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+#logoutButton, #unregister #unregisterButton {
+    background-color: var(--my-orange);
+} 
+#logoutButton:hover, #unregister #unregisterButton:hover {
+    background-color: var(--my-orange-dark);
+    transition: 0.5s ease;
+    text-shadow: var(--button-hover-font-shadow);
+}
+header nav .navLinks li #loginButton:hover, #home .button:hover, #competitors #submitButton:hover, #joinUs .formColumns #submitButton:hover, #login #desktopLoginForm div #submitButton:hover {
+    background-color: rgb(204, 240, 240);
+    transition: 0.5s ease;
+    text-shadow: var(--button-hover-font-shadow);
+    cursor: pointer;
+}
+header nav .navLinks li a:hover {
+    transition: 0.5s ease;
+    text-shadow: var(--button-hover-font-shadow);
+}
+header nav #logoContainer #logo {
+    width: 3em;
+    height: 3em;
+    margin: 1.5em;
+    cursor: pointer;
+}
+.hiddenForPHP {
+    display: none;
+}
+.sectionScroller {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: calc(100vh - 6em);
+}
+section {
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    color: var(--my-white);
+    scroll-snap-align: start;
+    position: relative;
+}
+section h1 {
+    font-size: var(--my-font-very-large-size);
+    font-family: var(--my-font-bold);
+    text-shadow: var(--font-shadow);
+}
+#home {
+    background-image: url(../media/jpg/img6.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#home h1 {
+    text-align: center;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.35em;
+}
+#home h1:last-child {
+    margin-bottom: 1em;
+}
+#home #buttonsContainer {
+    display: flex;
+} 
+#home .button {
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+    color: var(--my-navy);
+    background-color: var(--my-cyan);
+    padding: 1rem 2.5rem;
+    margin: 1.5rem;
+    border-radius: var(--my-border-radius);
+    text-decoration: none;
+}
+.intro {
+    background: var(--my-navy);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider {
+    background: var(--my-orange);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+} 
+.intro-text {
+    color: var(--my-cyan);
+    font-family: var(--my-font-bold);
+    font-size: 2.5rem;
+    padding: 2rem;
+} 
+.hide {
+    background: var(--my-navy);
+    overflow: hidden;
+} 
+.hide span {
+    transform: translateY(100%);
+    display: inline-block;
+}
+#competition {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0,0,0,0.3)),url(../media/jpg/img25.jpg);
+    color: var(--my-white);
+}
+section h1:not(#home h1) {
+    padding: 1rem 0rem 0rem 3rem;
+}
+#competition p, #competitors p, #aboutUs p, #race p, #opponents p, #unregister p {
+    font-size: var(--my-font-medium-size);
+    font-family: montserrat semibold;
+    padding: 1rem 1rem 1rem 3rem;
+    line-height: 150%;
+    text-shadow: var(--font-shadow);
+    text-align: center;
+}
+#competition .pContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+#competition p {
+    display: inline-block;
+    width: 30vw;
+    padding: 1rem;
+}
+#prizes {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img1.jpg);
+}
+#prizes table {
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-large-size);
+    letter-spacing: 0.75rem;
+    line-height: 200%;
+    text-shadow: var(--font-shadow);
+    color: var(--my-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#prizes th {
+    text-align: left;
+}
+#prizes th:last-child {
+    padding-left: 9rem;
+}
+#prizes td:nth-child(even) {
+    padding-left: 9rem;
+}
+#competitors {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img24.jpg);
+}
+#competitors p {
+    text-align: left;
+    padding: 0.3rem 3rem;
+}
+#competitors form {
+    display: flex;
+    flex-direction: row;
+    color: var(--my-navy);
+    margin-top: 0.5rem;
+    margin-left: 25%;
+    width: 50%;
+}
+#competitors #inputField {
+    border: unset;
+    width: 50%;
+    padding: 1rem;
+    border-radius: var(--my-border-radius);
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+    color: var(--my-navy);
+}
+::placeholder {
+    font-family: var(--my-font-bold);
+    color: #b9b9b9;
+}
+#competitors #submitButton {
+    border: unset;
+    width: 10rem;
+    padding: 1rem;
+    margin-left: 5rem;
+    background-color: var(--my-cyan);
+    color: var(--my-navy);
+    cursor: pointer;
+    border-radius: var(--my-border-radius);
+    font-family: var(--my-font-bold);
+}
+#competitors #tableContainer {
+    margin-top: 1rem;
+    width: 50%;
+    max-height: calc(3.25rem * 5);
+    margin-left: 25%;
+    overflow-y: auto;
+}
+#competitors #tableContainer table, #opponents #container #tableContainer table {
+    font-family: montserrat;
+    font-size: var(--my-font-small-size);
+    width: 100%;
+    color: var(--my-navy);
+    background-color: var(--my-white);
+    border-collapse: collapse;
+}
+#competitors th, #competitors td, #opponents th, #opponents td {
+    border: 1px solid #b9b9b9;
+    border-collapse: collapse;
+    font-size: 1rem;
+    text-align: center;
+}
+#competitors th, #opponents th {
+    font-family: var(--my-font-bold);
+    background-color: #f2f2f2;
+    padding: 1rem;
+}
+#competitors td, #opponents td {
+    font-family: montserrat;
+    padding: 1rem;
+    width: 50%;
+}
+#aboutUs {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img3.jpg);
+}
+#aboutUs .textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+#aboutUs p {
+    display: inline-block;
+    width: 45vw;
+    padding: 0.5rem;
+    font-size: calc(var(--my-font-medium-size) - 0.1rem);
+}
+#joinUs {
+    background-color: var(--my-white);
+}
+#joinUs h1 {
+    color: var(--my-navy);
+}
+#joinUs #desktopRegisterForm, #joinUs #ipadRegisterForm {
+    display: flex;
+    margin-left: 5%;
+    color: var(--my-navy);
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+}
+#joinUs #ipadRegisterForm {
+    display: none;
+}
+#joinUs .formColumns {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+}
+#joinUs .formColumns label {
+    margin-bottom: 0.5rem;
+}
+#joinUs .formColumns input:not(input[type="radio"]) {
+    background-color: #f0f0f0;
+    width: 90%;
+    height: 3rem;
+    padding: 1rem;
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+    color: var(--my-navy);
+    margin-bottom: 1.35rem;
+    border: unset;
+    border-radius: var(--my-border-radius);
+}
+#joinUs .formColumns input:not(input[type="radio"]):focus, #login #desktopLoginForm div input:focus, #competitors #inputField:focus {
+    outline: none;
+    border: 1px dashed var(--my-orange);
+    box-shadow: 0.1rem 0.4rem 0.6rem rgba(0, 0, 0, 0.25);
+    transition: 0.5s ease;
+}
+#joinUs .formColumns #submitButton {
+    font-family: var(--my-font-bold);
+    color: var(--my-navy);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--my-cyan);
+}
+#joinUs .formColumns a, #login #desktopLoginForm div a {
+    text-decoration: none;
+    color: var(--my-orange);
+}
+#joinUs .formColumns a:hover, #login #desktopLoginForm div a:hover {
+    color: var(--my-orange-dark);
+    transition: 0.5s ease;
+}
+#joinUs .formColumns #radioButtonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+#joinUs .formColumns #radioButtonsContainer #radioColumnTag {
+    width: 100%;
+}
+#joinUs .formColumns #radioButtonsContainer .radioColumns {
+    flex: content;
+    font-size: var(--my-font-small-size);
+    margin-bottom: 0.1rem;
+}
+#joinUs .formColumns #radioButtonsContainer .radioColumns label {
+    margin-top: 0.3rem;
+}
+#login {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img19.jpg);
+    font-family: var(--my-font-bold);
+    color: var(--my-white);
+}
+#login ::placeholder {
+    color: var(--my-white);
+}
+#login #desktopLoginForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#login #desktopLoginForm div {
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    margin-top: 2rem;
+    font-size: var(--my-font-small-size);
+}
+#login #desktopLoginForm div label {
+    margin-bottom: 0.25rem;
+}
+#login #desktopLoginForm div input {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 3rem;
+    border: unset;
+    border-radius: var(--my-border-radius);
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+    color: var(--my-white);
+}
+#login #desktopLoginForm div input:not(input[type="submit"]) {
+    padding-left: 1rem;
+}
+#login #desktopLoginForm div #submitButton {
+    font-family: var(--my-font-bold);
+    color: var(--my-navy);
+    background-color: var(--my-cyan);
+    margin-bottom: 0.5rem;
+}
+#race {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img15.jpg);
+}
+b {
+    color: var(--my-orange);
+}
+#race p {
+    font-size: calc(var(--my-font-large-size) - 0.5rem);
+}
+#opponents {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img7.jpg);
+}
+#opponents p {
+    padding: 0.5rem 0rem 0.5rem 3rem;
+}
+#opponents #container #tableContainer {
+    width: 100%;
+    max-height: calc(3.25rem * 5);
+    overflow: auto;
+}
+#opponents #container #tableContainer table {
+    width: 80%;
+    margin-left: 10%;
+}
+#unregister {
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img9.jpg);
+}
+#unregister p {
+    padding: 1rem 3rem;
+}
+#unregister #unregisterButton {
+    width: 20rem;
+    height: 3rem;
+    padding: 1rem;
+    font-family: var(--my-font-bold);
+    font-size: var(--my-font-small-size);
+    color: var(--my-navy);
+    border: unset;
+    border-radius: var(--my-border-radius);
+    cursor: pointer;
+    margin-left: calc(50% - 10rem);
+    margin-top: 2rem;
+}
+@media screen and (max-width: 810px) {
+    /*Hamburger menu*/
+    header nav {
+        position: relative;
+        align-items: unset;
+    }
+    .navLinks {
+        position: fixed;
+        background-color: var(--my-white);
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        gap: 3.5rem;
+        z-index: 999;
+        padding: 20vh 40vw;
+        clip-path: circle(100px at 90% -10%);
+        -webkit-clip-path: circle(100px at 90% -10%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .navLinks.open {
+        clip-path: circle(1400px at 90% -10%);
+        -webkit-clip-path: circle(1400px at 90% -10%);
+        pointer-events: all;
+        gap: 3.5rem;
+    }
+    header nav #logoContainer {
+        z-index: 1000;
+    }
+    #hamburger {
+        float: right;
+        margin: 2rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .line {
+        width: 30px;
+        height: 5px;
+        background-color: var(--my-navy);
+        margin: 5px;
+        border-radius: var(--my-border-radius);
+    }
+    #logoutButton {
+        margin-right: 0rem;
+    }
+
+    /*Homepage*/
+
+    #home {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img16.jpg);
+    }
+
+    /*Competition*/
+
+    #competition {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img14.jpg);
+    }
+    #competition .pContainer {
+        display: block;
+    }
+    #competition p {
+        display: inline-block;
+        width: 100vw;
+        padding: 2rem 2rem 2rem 3rem;
+    }
+
+    /*Prizes*/
+
+    #prizes {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img12.jpg);
+    }
+    #prizes table {
+        margin-top: 5rem;
+        letter-spacing: 0.5rem;
+        line-height: 300%;
+    }
+    #prizes th:last-child {
+        padding-left: 3rem;
+    }
+    #prizes td:nth-child(even) {
+        padding-left: 3rem;
+    }
+
+    /*Competitors*/
+
+    #competitors {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img10.jpg);
+    }
+    #competitors form {
+        width: 80%;
+        margin-left: 10%;
+    }
+    #competitors #tableContainer {
+        max-height: calc(3.25rem * 12);
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    /*About us*/
+
+    #aboutUs {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img13.jpg);
+    }
+    #aboutUs .textContainer {
+        display: block;
+    }
+    #aboutUs p {
+        width: 100%;
+        padding: 1rem 3rem;
+    }
+
+    /*Join us*/
+
+    #joinUs #desktopRegisterForm {
+        display: none;
+    }
+    #joinUs #ipadRegisterForm {
+        display: flex;
+    }
+    #joinUs #ipadRegisterForm .formColumns {
+        width: 50%;
+    }
+    #joinUs #ipadRegisterForm .formColumns .radioColumns {
+        margin-bottom: 3.1rem;
+    }
+    #joinUs .formColumns input:not(input[type="radio"]){
+        margin-bottom: 3rem;
+    }
+    #joinUs .formColumns #radioButtonsContainer .radioColumns input {
+        margin-bottom: 1rem;
+    }
+
+    /*Log in*/
+
+    #login #desktopLoginForm div {
+        margin-top: 10rem;
+    }
+
+    /*Race*/
+
+    #race {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img20.jpg);
+    }
+    #race p {
+        margin: 2rem;
+    }
+
+    /*Opponents*/
+
+    #opponents {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img21.jpg);
+    }
+    #opponents p {
+        padding: 1rem 3rem;
+    }
+    #opponents #container #tableContainer {
+        max-height: calc(3.25rem * 10);
+    }
+
+    /*Unregister*/
+
+    #unregister {
+        background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../media/jpg/img18.jpg);
+    }
+    #unregister p {
+        padding: 2rem 3rem;
+    }
+    #unregister #unregisterButton {
+        margin-top: 4rem;
+    }
+}
